@@ -11,7 +11,7 @@ A full documentation can be read [here](https://github.com/applicationsonline/li
 1. Install [Vagrant](http://vagrantup.com)
 2. fork and clone repository: 
 
-        git clone https://github.com/ozone-io/chef-librarian-vagrant-template.git
+        git clone https://github.com/ozone-io/librarian-chef-vagrant-template.git
         
 3. Adjust Cheffile to meet your cookbook requirements. (See librarian-chef documentation
 4. Run the following to provision and automatically run librarian-chef inside a vagrant instance:
