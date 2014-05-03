@@ -4,4 +4,5 @@ site "http://community.opscode.com/api/v1"
 
 cookbook "ntp", "1.6.0"
 cookbook "nginx", "2.4.2"
-
+cookbook "iptables-stop",
+  :path => "vendor/cookbooks/iptables-stop"
