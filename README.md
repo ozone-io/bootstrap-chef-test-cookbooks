@@ -7,13 +7,14 @@ Forked and created with [chef-librarian-vagrant-template](https://github.com/ozo
 * ntp 1.6.0 [cookbook link](http://community.opscode.com/cookbooks/ntp)
 
 ### Test-attributes
-The following contents of 'node.js' can be used with $chef-solo$ to install, run and configure nginx and ntp 
+The following contents of 'node.js' can be used with $chef-solo$ to install, run and configure nginx and ntp and disable iptables. 
 
     {
         "run_list": [
             "apt::default",
             "recipe[nginx]",
-            "recipe[ntp]"
+            "recipe[ntp]",
+            "recipe[iptables-stop]"
         ],
         "ntp": {
             "is_server": false,
