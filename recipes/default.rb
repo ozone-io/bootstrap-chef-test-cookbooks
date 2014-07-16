@@ -1,8 +1,3 @@
-package "iptables"
-
-service 'iptables' do
-  action [ :disable, :stop ]
-end
 
 %w(public logs).each do |dir|
   directory "#{node.app.web_dir}/#{dir}" do
