@@ -4,6 +4,5 @@ server {
     access_log <%= node.app.web_dir %>/logs/nginx_access.log;
     error_log <%= node.app.web_dir %>/logs/nginx_error.log;
 
-    keepalive_timeout 10
     root <%= node.app.web_dir %>/public;
 }

@@ -1,51 +1,41 @@
-# web-cookbook
+# Test cookbooks for ozone.io bootstrap-chef
 
-TODO: Enter the cookbook description here.
 
-## Supported Platforms
+### Cookbooks
+* nginx [cookbook link](http://community.opscode.com/cookbooks/nginx)
+* ntp [cookbook link](http://community.opscode.com/cookbooks/ntp)
 
-TODO: List your supported platforms.
+### Test-attributes
+The following contents of 'node.js' can be used with $chef-solo$ to install, run and configure nginx and ntp 
 
-## Attributes
+    {
+       "app": {
+            "name": "mysite",
+            "web_dir": "/var/data/www/apps/mysite",
+            "instance_name": "no idea"
+        },
+        "user": {
+            "name": "nobody"
+        },
+        "nginx":{
+            "default_site_enabled": false
+        },
+        "run_list": [
+            "apt::default",
+            "recipe[nginx]",
+            "recipe[ntp]",
+            "recipe[test]"
+        ],
+        "ntp": {
+            "is_server": false,
+            "servers": [
+                "0.pool.ntp.org",
+                "1.pool.ntp.org"
+            ]
+        }
+    }
+        
+relevant chef-solo command:
 
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['web']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+    chef-solo -j node.js -r https://github.com/ozone-io/bootstrap-chef-test-cookbooks/archive/master.tar.gz
 
-## Usage
-
-### web::default
-
-Include `web` in your node's `run_list`:
-
-```json
-{
-  "run_list": [
-    "recipe[web::default]"
-  ]
-}
-```
-
-## Contributing
-
-1. Fork the repository on Github
-2. Create a named feature branch (i.e. `add-new-recipe`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request
-
-## License and Authors
-
-Author:: YOUR_NAME (<YOUR_EMAIL>)
