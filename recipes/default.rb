@@ -20,4 +20,12 @@ template "#{node.app.web_dir}/public/index.html" do
   mode "0777"
 end
 
+nginx_site 'default' do
+  enable false
+end
+
+file "#{node.nginx.dir}/conf.d/default.conf" do
+  action :delete
+end
+
 nginx_site "#{node.app.name}.conf"
