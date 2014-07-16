@@ -14,9 +14,6 @@ The following contents of 'node.js' can be used with $chef-solo$ to install, run
             "web_dir": "/var/data/www/apps/mysite",
             "instance_name": "no idea"
         },
-        "user": {
-            "name": "nobody"
-        },
         "nginx":{
             "default_site_enabled": false
         },
@@ -24,7 +21,7 @@ The following contents of 'node.js' can be used with $chef-solo$ to install, run
             "apt::default",
             "recipe[nginx]",
             "recipe[ntp]",
-            "recipe[test]"
+            "recipe[web]"
         ],
         "ntp": {
             "is_server": false,
@@ -37,5 +34,5 @@ The following contents of 'node.js' can be used with $chef-solo$ to install, run
         
 relevant chef-solo command:
 
-    chef-solo -j node.js -r https://github.com/ozone-io/bootstrap-chef-test-cookbooks/archive/master.tar.gz
+    chef-solo -j node.json -r https://github.com/ozone-io/bootstrap-chef-test-cookbooks/archive/master.tar.gz
 
