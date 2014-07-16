@@ -1,7 +1,0 @@
-#Look at Cheffile documentation here: https://github.com/applicationsonline/librarian-chef
-
-site "http://community.opscode.com/api/v1"
-
-cookbook "ntp", "1.6.4"
-cookbook "nginx", "2.7.4"
-

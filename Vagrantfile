@@ -5,9 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define "precise" do |precise|
-    precise.vm.box = "precise64"
-    precise.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.define "saucy64" do |saucy64|
+     saucy64.vm.box = "chef/ubuntu-13.10"
   end
 
   #forward ssh in order to git push to github
@@ -15,5 +14,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  
   #install librarian chef and its dependencies
   config.vm.provision "shell",
-    inline: "apt-get update && apt-get install -y build-essential git && gem install librarian-chef --no-ri --no-rdoc --verbose && cd /vagrant && librarian-chef install --verbose"
+    inline: "apt-get update && apt-get -y install git && wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.2.0-2_amd64.deb -O chefdk.deb && sudo dpkg -i chefdk.deb && cd /vagrant"
+  
 end

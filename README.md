@@ -1,19 +1,30 @@
 # Test cookbooks for ozone.io bootstrap-chef
 
-Forked and created with [chef-librarian-vagrant-template](https://github.com/ozone-io/chef-librarian-vagrant-template)
 
 ### Cookbooks
-* nginx 2.4.2 [cookbook link](http://community.opscode.com/cookbooks/nginx)
-* ntp 1.6.0 [cookbook link](http://community.opscode.com/cookbooks/ntp)
+* nginx [cookbook link](http://community.opscode.com/cookbooks/nginx)
+* ntp [cookbook link](http://community.opscode.com/cookbooks/ntp)
 
 ### Test-attributes
 The following contents of 'node.js' can be used with $chef-solo$ to install, run and configure nginx and ntp 
 
     {
+       "app": {
+            "name": "mysite",
+            "web_dir": "/var/data/www/apps/mysite",
+            "instance_name": "no idea"
+        },
+        "user": {
+            "name": "nobody"
+        },
+        "nginx":{
+            "default_site_enabled": false
+        },
         "run_list": [
             "apt::default",
             "recipe[nginx]",
-            "recipe[ntp]"
+            "recipe[ntp]",
+            "recipe[test]"
         ],
         "ntp": {
             "is_server": false,
