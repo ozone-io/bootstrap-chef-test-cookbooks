@@ -10,11 +10,7 @@ end
 template "#{node.nginx.dir}/sites-available/#{node.app.name}.conf" do
   source "nginx.conf.erb"
   mode "0644"
-end
-
-template "#{node.app.web_dir}/public/index.html" do
-  source "index.html.erb"
-  mode "0777"
+  notifies :reload, "service[nginx]", :immediately
 end
 
 nginx_site 'default' do
