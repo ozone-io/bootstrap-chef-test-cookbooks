@@ -1,6 +1,4 @@
 source "https://supermarket.getchef.com"
 
-metadata
-
-cookbook "nginx"
-cookbook "ntp"
+cookbook 'iptables-ng', '~> 2.2.0'
+cookbook 'zookeeper', '~> 2.4.1'
